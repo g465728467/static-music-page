@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_2480459_52n3edaf53h.css">
+    <title>Document</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+
+    html,body,section{
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    ul,li{
+        list-style: none;
+    }
+
+    #albumPic{
+        width: 48vh
+    }
+    
+    main{
+        display: flex;
+        flex-direction: row;
+        height: calc(100% - 24vh)
+    }
+
+    #musicAlbum{
+        margin-top: 10vh;
+        margin-left: 22vh;
+        margin-right: 12vh;
+        margin-bottom: 10vh
+    }
+    
+    .contro{
+        margin-top: 5vh;
+        display: flex;
+        justify-content:space-around;
+        color: #acacac;
+    }
+
+    .contro i{
+        font-size: 5vh;
+        color: #acacac;
+    }
+
+    .contro i:hover{
+        color: #fff;
+    }
+
+    #musicInfo{
+        margin-top: 10vh;
+        margin-right: 22vh;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1
+    }
+
+    .tag{
+        padding: 0.5vh 2vh;
+        align-self:baseline;
+        background-color: deepskyblue;
+        font-size: 1vh;
+        color: #fff;
+    }
+
+    .musicTitle{
+        margin-top: 3vh;
+        font-size: 5.5vh;
+        color: #fff
+    }
+
+    .musicData{
+        display: flex;
+        margin-top: 12vh;
+        color: #fff;
+    }
+
+    .musicData .dataItem {
+        flex: 1;
+        font-size: 2.8vh;
+        line-height: 2.8vh;
+    }
+
+    .dataItem i{
+        font-size: 2.8vh;
+    }
+
+    .timeBar{
+        margin-top: 12vh;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .now{
+        width: 100vh;
+        height: 1vh;
+        border-radius: 2vh;
+        background-color: #acacac;
+    }
+
+    .time{
+        margin-left: 1vh;
+        font-size: 1vh;
+        color: #fff;
+    }
+
+    #author{
+        margin-top: 3vh;
+        font-size: 1vh;
+        color: #acacac
+    }
+
+    footer{
+        position: relative;
+        display: flex;
+        height: 24vh;
+        justify-content:center;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .albumList{
+        display: flex;
+        width: 80%;
+        justify-content: space-around;
+    }
+
+    .item{
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+        cursor: pointer;
+    }
+
+    li:hover{
+        box-shadow: 0px 0px 8px #fff;
+    }
+
+    .item img{
+        width: 16vh;
+        vertical-align: bottom;
+    }
+
+    .item h6{
+        text-align: center;
+        padding: 0.5vh auto;
+    }
+
+    .paging{
+        display: none;
+        font-size: 8vh;
+        color: #acacac;
+        transition: all 1s;
+        cursor: pointer;
+    }
+
+    footer:hover .paging{
+        display: block;
+    }
+    
+    .paging:hover{
+        color: #d7d7d7;
+    }
+
+    .bg{
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        z-index: -1;
+        background: url(../static-music-page/static-res/4.jpeg)  center center no-repeat;
+        background-size: cover;
+        filter: blur(4px);
+    }
+
+    .bg::after{
+        content: '';
+        background-color: rgb(0,0,0,0.4);
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+    }
+    </style>
+</head>
+<body>
+    <section>
+        <main>
+            <aside id="musicAlbum">
+                <img src="static-res/4.jpeg" id="albumPic">
+                <div class="contro">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <i class="iconfont icon-you-copy"></i>
+                    <i class="iconfont icon-xiayishou"></i>
+                </div>
+            </aside>
+
+            <aside id="musicInfo">
+                <span class="tag">标签</span>
+                <span class="musicTitle">Shape of you</span>
+                <div class="musicData">
+                    <div class="dataItem">
+                        <i class="iconfont icon-erji"></i>
+                        3451
+                    </div>
+                    <div class="dataItem">
+                        <i class="iconfont icon-shoucang1"></i>
+                        128
+                    </div>
+                    <div class="dataItem">
+                        <i class="iconfont icon-dianzan"></i>
+                        20
+                    </div>
+                </div>
+                <div class="timeBar">
+                    <div class="bar">
+                        <div class="now"></div>
+                    </div>
+                    <span class="time">00:00</span>
+                </div>
+                <span id="author">黄老板</span>
+            </aside>
+
+        </main>
+
+        <footer>
+            <i class="paging iconfont icon-fenye-shangyiye"></i>
+            <ul class="albumList">
+                <li class="item">
+                    <img src="static-res/2.jpeg" alt="">
+                    <h6>我喜欢的</h6>
+                </li>
+                <li class="item">
+                        <img src="static-res/2.jpeg" alt="">
+                        <h6>我喜欢的</h6>
+                </li>
+                <li class="item">
+                        <img src="static-res/2.jpeg" alt="">
+                        <h6>我喜欢的</h6>
+                </li>
+                <li class="item">
+                        <img src="static-res/2.jpeg" alt="">
+                        <h6>我喜欢的</h6>
+                </li>
+                <li class="item">
+                        <img src="static-res/2.jpeg" alt="">
+                        <h6>我喜欢的</h6>
+                </li>
+            </ul>
+            <i class="paging iconfont icon-fenye-xiayiye"></i>
+        </footer>
+    </section>
+    
+    <div class="bg"></div>
+</body>
+</html>
